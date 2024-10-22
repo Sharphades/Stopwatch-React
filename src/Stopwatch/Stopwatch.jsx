@@ -18,17 +18,17 @@ export default function Counter() {
          if (ms === 9) {
             setMS(0)
             setSeconds(s => s + 1)
-        }
-        
-        if (seconds === 59) {
-            setMinutes(m => m + 1)
-        }
+            if (seconds === 59) {
+                setSeconds(0)
+                setMinutes(m => m + 1)
+            }
+         }
          
             return () => {
                 clearInterval(mainCounter)
             }
         }
-        },[ms,seconds,minutes,isCounting])
+        },[ms, seconds, isCounting])
 
     function start() {
         setIsCounting(true)
